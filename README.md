@@ -10,7 +10,7 @@ Cardiac pacemaker pacing pulse generation is a hard real-time system because the
 ### 2. Netflix video player buffering decision
 **Classification:** Soft
 
-Netflix video buffering is a soft real-time system because late buffering decisions can reduce video quality or cause pauses. Timing mishaps affect the experience but does not create any safety hazard.
+Netflix video buffering is a soft real-time system because late buffering decisions can reduce video quality or cause pauses. Timing mishaps affect the experience but do not create any safety hazard.
 
 ### 3. Anti-lock braking system actuator command
 **Classification:** Hard
@@ -18,7 +18,7 @@ Netflix video buffering is a soft real-time system because late buffering decisi
 An anti-lock braking system is a hard real-time system because adjusting brake pressure must happen quickly during events. If this is missed, it could cause wheel lockup, loss of steering control, or a crash.
 
 ### 4. Bank ATM cash dispenser receipt printer
-**Classification:** Non real-time
+**Classification:** None
 
 A bank ATM receipt printer doesn’t have a significant real-time function because delayed receipt printing causes inconvenience. Timing failures do not affect human safety or system operation.
 
@@ -28,9 +28,9 @@ A bank ATM receipt printer doesn’t have a significant real-time function becau
 Falcon 9 first-stage gimbal control is a hard real-time system because actuator commands need to continuously stabilize the rocket during landing. If the timing is off, it could result in instability or destruction.
 
 ### 6. Smart-fridge temperature display
-**Classification:** Soft
+**Classification:** None
 
-A smart-fridge temperature display is a soft real-time system because display updates should occur quickly for usability. However, a delayed display update usually does not immediately mean danger.
+A smart-fridge temperature display has no significant real-time requirement because delayed display updates mainly affect convenience. The display itself is not safety-critical and timing failures usually do not affect refrigerator operation.
 
 ### 7. Tesla Autopilot lane-keeping torque command
 **Classification:** Firm
@@ -62,7 +62,7 @@ A PCA infusion pump dose limiter is a hard real-time system because it must enfo
 The pacemaker sensing circuitry detects an atrial contraction (P-wave) without a corresponding ventricular contraction (R-wave) occurring before the programmed AV delay expires.
 
 **Deadline:**  
-Approximately 30–40 ms timing tolerance for safe ventricular pacing after the AV delay timeout.
+Within the programmed AV delay interval (typically tens to hundreds of milliseconds depending on device configuration).
 
 **Citation:**  
 [ANSI/AAMI/ISO 14708-2 – Implantable Medical Devices: Cardiac Pacemakers.](https://www.iso.org/obp/ui/#iso:std:iso:14708:-2:ed-2:v1:en)
@@ -89,13 +89,15 @@ Bosch ABS documentation states that ABS can modulate brake pressure up to 40 tim
 ### 3. Falcon 9 first-stage gimbal control during landing
 
 **Triggering Event:**  
-The onboard guidance system calculates updated rocket attitude and angular velocity measurements.
+The onboard guidance system calculates updated rocket attitude and angular velocity measurements and determines the required trajectory correction.
 
 **Deadline:**  
-Approximately 1–5 ms (200–1000 Hz control-loop frequency).
+Approximately milliseconds in duration, requiring continuous closed-loop control updates during powered descent and landing.
 
-**Citation:**  
-Aerospace flight-control systems for unstable vehicles commonly operate at hundreds to thousands of hertz to maintain stability through continuous rapid correction during powered descent and landing.
+**Citation:**
+https://link.springer.com/article/10.1007/s12567-022-00423-6
+
+The paper describes the guidance and control architecture required for reusable rocket landing and the need for continuous trajectory corrections throughout powered descent.
 
 ---
 
@@ -103,7 +105,7 @@ Aerospace flight-control systems for unstable vehicles commonly operate at hundr
 
 ### 2024 CrowdStrike Software Update Failure
 
-The 2024 CrowdStrike software update failure was a major incident that caused global disruptions across transportation, healthcare, banking, and communication systems. A faulty CrowdStrike update caused millions of Windows systems to crash and become unavailable, resulting in widespread service outages. Airlines were forced to ground flights, hospitals lost access to critical computer systems, and financial institutions experienced service interruptions around the world. The outage demonstrated how a single software failure can quickly affect many organizations that rely on the same technology infrastructure. Recovery efforts took significant time because affected systems could not start normally and required manual intervention in many cases. From a real-time systems perspective, failure occurred in critical low-level software that prevented systems from reaching a stable operating state. Because the failure occurred at such a fundamental level, normal services and recovery processes could not operate as intended. The incident highlights the importance of extensive testing, fault tolerance, and recovery planning for software deployed on critical systems. It also demonstrates how failures in foundational software can rapidly propagate across large, interconnected networks and impact millions of users worldwide.
+The 2024 CrowdStrike software update failure was a major incident that caused global disruptions across transportation, healthcare, banking, and communication systems. A faulty CrowdStrike update caused millions of Windows systems to crash and become unavailable, resulting in widespread service outages. Airlines were forced to ground flights, hospitals lost access to critical computer systems, and financial institutions experienced service interruptions around the world. The outage demonstrated how a single software failure can quickly affect many organizations that rely on the same technology infrastructure. Recovery efforts took significant time because affected systems could not start normally and required manual intervention in many cases. From a real-time systems perspective, the failure occurred in critical low-level software that prevented systems from reaching a stable operating state. Because the failure occurred at such a fundamental level, normal services and recovery processes could not operate as intended. The incident highlights the importance of extensive testing, fault tolerance, and recovery planning for software deployed on critical systems. It also demonstrates how failures in foundational software can rapidly propagate across large, interconnected networks and impact millions of users worldwide.
 
 ### Citation
 
@@ -119,7 +121,9 @@ ISO 26262 governs safety-critical automotive real-time systems such as lane-keep
 
 ### Citation
 
-[ISO 26262: Road Vehicles – Functional Safety](https://www.iso.org/obp/ui/en/#iso:std:iso:26262:-7:ed-2:v1:en)](https://blog.ansi.org/ansi/iso-26262-2018-road-vehicle-functional-safety/)
+[ISO 26262: Road Vehicles – Functional Safety](https://www.iso.org/obp/ui/en/#iso:std:iso:26262:-7:ed-2:v1:en)
+
+https://blog.ansi.org/ansi/iso-26262-2018-road-vehicle-functional-safety/
 
 https://embeddedinembedded.blogspot.com/2017/11/iso-26262-part-67-software.html
 
